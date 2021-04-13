@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "471079503444",
+    "firebase_url": "https://lasalleacousticapp.firebaseio.com",
+    "project_id": "lasalleacousticapp",
+    "storage_bucket": "lasalleacousticapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471079503444:android:1e3ccaaef0fa8727eb0fc1",
+        "android_client_info": {
+          "package_name": "com.example.noisitapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471079503444-hgnd520snjlc2i24sm0s735qu1therf7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.noisitapp",
+            "certificate_hash": "ff9942d804d8ee2f5836a803b3a453298b5e89b0"
+          }
+        },
+        {
+          "client_id": "471079503444-79tgco8o10j195uo09721qvpsl14qckr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8AhzkFOV8QTbAl-vhDDsK0G_FOoBvV9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471079503444-79tgco8o10j195uo09721qvpsl14qckr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

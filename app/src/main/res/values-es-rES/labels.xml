@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="human_speech">(Humano) Persona Hablando</string>
+    <string name="human_laughing">(Humano) Persona Riendo</string>
+    <string name="human_shouting">(Humano) Persona Chillando</string>
+    <string name="human_crying">(Humano) Persona Llorando</string>
+    <string name="human_coughing">(Humano) Persona Tosiendo</string>
+    <string name="human_sneezing">(Humano) Persona Estornudando</string>
+    <string name="human_singing">(Humano) Persona Cantando</string>
+    <string name="human_infant">(Humano) Bebé</string>
+    <string name="human_children">(Humano) Niños</string>
+    <string name="human_footsteps">(Humano) Pasos de Persona</string>
+
+    <string name="nature_wind">(Naturaleza) Viento</string>
+    <string name="nature_water">(Naturaleza) Agua</string>
+    <string name="nature_river">(Naturaleza) Río</string>
+    <string name="nature_sea_waves">(Naturaleza) Mar: Ola</string>
+    <string name="nature_thunder">(Naturaleza) Trueno</string>
+    <string name="nature_rain">(Naturaleza) Lluvia</string>
+
+    <string name="animals_dogbarking">(Animales) Perro: Ladrido</string>
+    <string name="animals_dog_howl">(Animales) Perro: Aullído</string>
+    <string name="animals_cat">(Animales) Gato</string>
+    <string name="animals_birdtweet">(Animales) Pájaro: Pío</string>
+
+    <string name="vegetation_leaves_rustling">(Vegetación) Hojas</string>
+
+    <string name="construction_jackhammer">(Construcción) Martillo Neumático</string>
+    <string name="construction_hammering">(Construcción) Martillo</string>
+    <string name="construction_drilling">(Construcción) Taladradora</string>
+    <string name="construction_sawing">(Construcción) Sierra</string>
+    <string name="construction_explosion">(Construcción) Explosión</string>
+    <string name="construction_engine_running">(Construcción) Motor</string>
+
+    <string name="ventilation_airconditioner">(Ventilación) Aire Acondicionado</string>
+
+    <string name="transport_bicycle">(Transporte) Bicicleta</string>
+    <string name="transport_skateboard">(Transporte) Monopatín</string>
+    <string name="transport_boat">(Transporte) Barco</string>
+    <string name="transport_train">(Transporte) Tren</string>
+    <string name="transport_subway">(Transporte) Metro</string>
+    <string name="transport_car">(Transporte) Coche</string>
+    <string name="transport_police">(Transporte) Policía</string>
+    <string name="transport_ambulance_siren">(Transporte) Ambulancia: Sirena</string>
+    <string name="transport_vehicle_horn">(Transporte) Bocina de Vehículo</string>
+    <string name="transport_vehicle_brakes">(Transporte) Frenos de Vehículo</string>
+    <string name="transport_vehicle_wheels">(Transporte) Ruedas de Vehículo</string>
+    <string name="transport_motorcycle">(Transporte) Motocicleta</string>
+    <string name="transport_bus">(Transporte) Bus</string>
+    <string name="transport_truck">(Transporte) Camión</string>
+    <string name="transport_garbage_truck">(Transporte) Camión de Basura</string>
+    <string name="transport_airplane">(Transporte) Avión</string>
+    <string name="transport_helicopter">(Transporte) Helicóptero</string>
+
+    <string name="music_livemusic">(Música) Música en Directo</string>
+    <string name="music_car_radio">(Música) Radio del Coche</string>
+    <string name="music_houseparty">(Música) Fiesta en Casa</string>
+    <string name="music_club">(Música) Club Musical</string>
+    <string name="music_icecream_truck">(Música) Camión de Helados</string>
+    <string name="music_background_music">(Música) Música de Fondo</string>
+
+    <string name="other_alarm">(Otro) Alarma</string>
+    <string name="other_bell">(Otro) Campana</string>
+    <string name="other_unidentified_sound">(Otro) Sonido No Identificado</string>
+</resources>

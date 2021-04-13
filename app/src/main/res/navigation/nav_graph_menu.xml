@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_menu"
+    app:startDestination="@id/dashboardFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.noisitapp.View.DashboardFragment"
+        android:label="DashboardFragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_newRecordingFragment"
+            app:destination="@id/newRecordingFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_editRecordingFragment"
+            app:destination="@id/editRecordingFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment2" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_aboutUserFragment"
+            app:destination="@id/aboutUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editRecordingFragment"
+        android:name="com.example.noisitapp.View.EditRecordingFragment"
+        android:label="EditRecordingFragment" >
+        <action
+            android:id="@+id/action_editRecordingFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_editRecordingFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment2" />
+        <action
+            android:id="@+id/action_editRecordingFragment_to_aboutUserFragment"
+            app:destination="@id/aboutUserFragment" />
+        <action
+            android:id="@+id/action_editRecordingFragment_to_viewChartRecordingFragment"
+            app:destination="@id/viewChartRecordingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment2"
+        android:name="com.example.noisitapp.View.AboutAppFragment"
+        android:label="AboutFragment" >
+        <action
+            android:id="@+id/action_aboutFragment2_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_aboutFragment2_to_aboutUserFragment"
+            app:destination="@id/aboutUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newRecordingFragment"
+        android:name="com.example.noisitapp.View.NewRecordingFragment"
+        android:label="NewRecordingFragment" >
+        <action
+            android:id="@+id/action_newRecordingFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_newRecordingFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment2" />
+        <action
+            android:id="@+id/action_newRecordingFragment_to_aboutUserFragment"
+            app:destination="@id/aboutUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUserFragment"
+        android:name="com.example.noisitapp.View.AboutUserFragment"
+        android:label="AboutUserFragment" >
+        <action
+            android:id="@+id/action_aboutUserFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_aboutUserFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewChartRecordingFragment"
+        android:name="com.example.noisitapp.View.ViewChartRecordingFragment"
+        android:label="ViewChartRecordingFragment" >
+        <action
+            android:id="@+id/action_viewChartRecordingFragment_to_editRecordingFragment"
+            app:destination="@id/editRecordingFragment" />
+        <action
+            android:id="@+id/action_viewChartRecordingFragment_to_aboutUserFragment"
+            app:destination="@id/aboutUserFragment" />
+        <action
+            android:id="@+id/action_viewChartRecordingFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment2" />
+        <action
+            android:id="@+id/action_viewChartRecordingFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+</navigation>

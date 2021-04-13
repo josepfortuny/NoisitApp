@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="labels_item">
+    <item>@string/human_speech</item>
+    <item>@string/human_laughing</item>
+    <item>@string/human_shouting</item>
+    <item>@string/human_crying</item>
+    <item>@string/human_coughing</item>
+    <item>@string/human_sneezing</item>
+    <item>@string/human_singing</item>
+    <item>@string/human_infant</item>
+    <item>@string/human_children</item>
+    <item>@string/human_footsteps</item>
+
+    <item>@string/nature_wind</item>
+    <item>@string/nature_water</item>
+    <item>@string/nature_river</item>
+    <item>@string/nature_sea_waves</item>
+    <item>@string/nature_thunder</item>
+
+    <item>@string/animals_dogbarking</item>
+    <item>@string/animals_dog_howl</item>
+    <item>@string/animals_cat</item>
+    <item>@string/animals_birdtweet</item>
+
+    <item>@string/vegetation_leaves_rustling</item>
+
+    <item>@string/construction_jackhammer</item>
+    <item>@string/construction_hammering</item>
+    <item>@string/construction_drilling</item>
+    <item>@string/construction_sawing</item>
+    <item>@string/construction_explosion</item>
+    <item>@string/construction_engine_running</item>
+
+    <item>@string/ventilation_airconditioner</item>
+
+    <item>@string/transport_bicycle</item>
+    <item>@string/transport_skateboard</item>
+    <item>@string/transport_boat</item>
+    <item>@string/transport_train</item>
+    <item>@string/transport_subway</item>
+    <item>@string/transport_car</item>
+    <item>@string/transport_police</item>
+    <item>@string/transport_ambulance_siren</item>
+    <item>@string/transport_vehicle_horn</item>
+    <item>@string/transport_vehicle_brakes</item>
+    <item>@string/transport_vehicle_wheels</item>
+    <item>@string/transport_motorcycle</item>
+    <item>@string/transport_bus</item>
+    <item>@string/transport_truck</item>
+    <item>@string/transport_garbage_truck</item>
+    <item>@string/transport_airplane</item>
+    <item>@string/transport_helicopter</item>
+
+    <item>@string/music_livemusic</item>
+    <item>@string/music_car_radio</item>
+    <item>@string/music_houseparty</item>
+    <item>@string/music_club</item>
+    <item>@string/music_icecream_truck</item>
+    <item>@string/music_background_music</item>
+
+    <item>@string/other_alarm</item>
+    <item>@string/other_bell</item>
+    <item>@string/other_unidentified_sound</item>
+</string-array>
+
+
+    <string name="human_speech">(Human) Person Speech</string>
+    <string name="human_laughing">(Human) Person Laughing</string>
+    <string name="human_shouting">(Human) Person Shouting</string>
+    <string name="human_crying">(Human) Person Crying</string>
+    <string name="human_coughing">(Human) Person Coughing</string>
+    <string name="human_sneezing">(Human) Person Sneezing</string>
+    <string name="human_singing">(Human) Person Singing</string>
+    <string name="human_infant">(Human) Infant</string>
+    <string name="human_children">(Human) Children</string>
+    <string name="human_footsteps">(Human) Person Footsteps</string>
+
+    <string name="nature_wind">(Nature) Wind</string>
+    <string name="nature_water">(Nature) Water</string>
+    <string name="nature_river">(Nature) River</string>
+    <string name="nature_sea_waves">(Nature) Sea: Wave</string>
+    <string name="nature_thunder">(Nature) Thunder</string>
+    <string name="nature_rain">(Nature) Rain</string>
+
+
+    <string name="animals_dogbarking">(Animals) Dog: Bark</string>
+    <string name="animals_dog_howl">(Animals) Dog: Howl</string>
+    <string name="animals_cat">(Animals) Cat</string>
+    <string name="animals_birdtweet">(Animals) Bird: Tweet</string>
+
+    <string name="vegetation_leaves_rustling">(Vegetation) Leaves Rustling</string>
+
+    <string name="construction_jackhammer">(Construction) Jackhammer</string>
+    <string name="construction_hammering">(Construction) Hammering</string>
+    <string name="construction_drilling">(Construction) Drilling</string>
+    <string name="construction_sawing">(Construction) Sawing</string>
+    <string name="construction_explosion">(Construction) Explosion</string>
+    <string name="construction_engine_running">(Construction) Engine running</string>
+
+    <string name="ventilation_airconditioner">(Ventilation) Air Conditioner</string>
+
+    <string name="transport_bicycle">(Transport) Bicycle</string>
+    <string name="transport_skateboard">(Transport) Skateboard</string>
+    <string name="transport_boat">(Transport) Boat</string>
+    <string name="transport_train">(Transport) Train</string>
+    <string name="transport_subway">(Transport) Subway</string>
+    <string name="transport_car">(Transport) Car</string>
+    <string name="transport_police">(Transport) Police</string>
+    <string name="transport_ambulance_siren">(Transport) Ambulance: Siren</string>
+    <string name="transport_vehicle_horn">(Transport) Vehicle Horn</string>
+    <string name="transport_vehicle_brakes">(Transport) Vehicle Brakes</string>
+    <string name="transport_vehicle_wheels">(Transport) Vehicle Wheels Passing</string>
+    <string name="transport_motorcycle">(Transport) Motorcycle</string>
+    <string name="transport_bus">(Transport) Bus</string>
+    <string name="transport_truck">(Transport) Truck</string>
+    <string name="transport_garbage_truck">(Transport) Garbage Truck</string>
+    <string name="transport_airplane">(Transport) Airplane</string>
+    <string name="transport_helicopter">(Transport) Helicopter</string>
+
+    <string name="music_livemusic">(Music) Live Music</string>
+    <string name="music_car_radio">(Music) Car Radio</string>
+    <string name="music_houseparty">(Music) House Party</string>
+    <string name="music_club">(Music) Club</string>
+    <string name="music_icecream_truck">(Music) Ice Cream Truck</string>
+    <string name="music_background_music">(Music) Background Music</string>
+
+    <string name="other_alarm">(Other) Alarm</string>
+    <string name="other_bell">(Other) Bell</string>
+    <string name="other_unidentified_sound">(Other) Unidentified Sound</string>
+
+</resources>

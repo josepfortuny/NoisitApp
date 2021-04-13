@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3D96D8</color>
+    <color name="ToolbarColor">#3D96D8</color>
+    <color name="colorPrimaryDark">#2F7FBB</color>
+    <color name="colorAccent">#3D96D8</color>
+    <color name="appPrimaryColor">#D3F3FE</color>
+    <color name="appSecondaryColor">#E8F9FF</color>
+    <color name="greyColor">#606060</color>
+</resources>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linearLayout_editRecording"
+        tools:ignore="NotSibling">
+        <LinearLayout
+            android:id="@+id/linearLayout_editRecording"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp"
+                android:orientation="vertical">
+                <Chronometer
+                    android:id="@+id/chronometer_edit_recording_player"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:textSize="35sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/tv_editrecording_status_recording"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/downloading_file"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom= "10dp"
+                android:paddingHorizontal="10dp">
+                <TextView
+                    android:id="@+id/tv_view_chart"
+                    android:layout_width="match_parent"
+                    android:textSize="18sp"
+                    android:layout_height="match_parent"
+                    android:text="@string/tv_view_chart_analysis"
+                    android:drawableLeft="@drawable/ic_baseline_insert_chart"
+                    android:textColor="@color/colorPrimary">
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:text="@string/name"/>
+
+                <EditText
+                    android:id="@+id/et_editrecording_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name_your_recording"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:inputType="text"
+                    tools:targetApi="lollipop" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/title_tv_recording_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:text="@string/date_and_time"/>
+
+                <TextView
+                    android:id="@+id/tv_editrecording_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textSize="15sp"
+                    android:paddingStart="10dp"
+                    android:text="@string/loading"
+                    android:paddingLeft="10dp"
+                    android:gravity="start" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/title_tv_recording_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:text="@string/duration"
+                    android:gravity="start" />
+
+                <TextView
+                    android:id="@+id/tv_editrecording_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textSize="15sp"
+                    android:paddingStart="10dp"
+                    android:text="@string/loading"
+                    android:gravity="start"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/title_tv_recording_labels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:text="@string/labels"
+                    android:gravity="start" />
+                <TextView
+                    android:id="@+id/tv_editrecording_labels"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textStart"
+                    android:textSize="15sp"
+                    android:paddingStart="10dp"
+                    android:text="@string/loading"
+                    android:gravity="start"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:paddingHorizontal="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/title_tv_machine_learning_labels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:text="@string/ia_labels"
+                    android:gravity="start" />
+                <TextView
+                    android:id="@+id/tv_machine_learning_labels"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textStart"
+                    android:textSize="15sp"
+                    android:paddingStart="10dp"
+                    android:text="@string/loading"
+                    android:gravity="start"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/title_tv_recording_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    android:text="@string/location"/>
+
+                <TextView
+                    android:id="@+id/tv_editrecording_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textSize="15sp"
+                    android:paddingStart="10dp"
+                    android:text="@string/loading"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/title_tv_mobile_device"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:text="@string/mobile_device"/>
+
+                <TextView
+                    android:id="@+id/tv_editrecording_mobile_device"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textSize="15sp"
+                    android:paddingLeft="10dp"
+                    android:text="@string/loading"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="30dp"
+                android:orientation="vertical"
+                android:layout_weight="15">
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        android:id="@+id/fab_editrecord_delete_recording"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="32dp"
+        android:backgroundTint="#3D96D8"
+        android:foregroundTint="#FFFFFF"
+        app:borderWidth="0dp"
+        android:src="@drawable/ic_delete_white_24dp"
+        app:elevation="6dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_edit_record_play_recording"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:backgroundTint="#3D96D8"
+        android:foregroundTint="#FFFFFF"
+        app:borderWidth="0dp"
+        android:src="@drawable/ic_play_arrow_24dp"
+        app:elevation="6dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_editrecording_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="32dp"
+        android:backgroundTint="#3D96D8"
+        android:foregroundTint="#FFFFFF"
+        app:borderWidth="0dp"
+        android:src="@drawable/ic_save_24dp"
+        app:elevation="6dp"/>
+</RelativeLayout>
