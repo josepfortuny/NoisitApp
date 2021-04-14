@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
@@ -31,7 +30,6 @@ import com.example.noisitapp.Model.Recording
 import com.example.noisitapp.Model.User
 import com.example.noisitapp.R
 import com.example.noisitapp.R.*
-import com.example.noisitapp.ViewModel.GpsUtils
 import com.example.noisitapp.ViewModel.UserViewModelComunication
 import com.google.android.gms.location.*
 import com.google.firebase.storage.FirebaseStorage
@@ -174,7 +172,6 @@ class NewRecordingFragment: Fragment() {
                 fusedLocationClient.lastLocation.addOnCompleteListener { task ->
                     var location: Location? = task.result
                     if (location != null) {
-                        Toast.makeText(mContext, "location" + location.latitude, Toast.LENGTH_LONG)
                         uploadRecording.latitude = location.latitude
                         uploadRecording.longitude = location.longitude
                         uploadRecording.address = getInfoFromLocation(uploadRecording.latitude, uploadRecording.longitude)
@@ -198,7 +195,7 @@ class NewRecordingFragment: Fragment() {
         mLocationRequest.numUpdates = 1
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(mContext)
-        fusedLocationClient!!.requestLocationUpdates(
+        fusedLocationClient.requestLocationUpdates(
             mLocationRequest, mLocationCallback,
             Looper.myLooper()
         )
@@ -351,11 +348,11 @@ class NewRecordingFragment: Fragment() {
     private fun stopRecording() : Boolean{
         noErrorRecording = false
         try {
+            stopDrawing()
             mediaRecorder.stop()
             mediaRecorder.reset()
             mediaRecorder.release()
             chronometer?.stop()
-            stopDrawing()
             noErrorRecording = true
         } catch (stopException: RuntimeException) {
             //Do nothing
@@ -383,13 +380,19 @@ class NewRecordingFragment: Fragment() {
     }
     // part del drawing
     private fun startDrawingRecording() {
+
         timer = Timer()
         timer?.schedule(object : TimerTask() {
             override fun run() {
-                val currentMaxAmplitude = mediaRecorder.maxAmplitude
-                audioRecordView.update(currentMaxAmplitude) //redraw view
+                try{
+                    val currentMaxAmplitude = mediaRecorder.maxAmplitude
+                    audioRecordView.update(currentMaxAmplitude) //redraw view
+                }catch (e :IllegalStateException){
+                    //Do Nothinh
+                }
             }
         }, 0, 200)
+
     }
     private fun stopDrawing() {
         timer?.cancel()

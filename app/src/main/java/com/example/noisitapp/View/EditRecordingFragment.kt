@@ -101,7 +101,7 @@ class EditRecordingFragment : Fragment() {
                 myUser = it
                 index = user.getIndex()
                 audioPath = Environment.getExternalStorageDirectory()
-                    .getAbsolutePath() + "/Noisitapp Audio Files/" + myUser!!.records[index].path
+                    .absolutePath + "/Noisitapp Audio Files/" + myUser!!.records[index].path
                 if (!isRecordingInMobileStorage()) {
                     downloadRecording()
                 }
@@ -134,7 +134,7 @@ class EditRecordingFragment : Fragment() {
      * Function that downloads the file from a Uri to the external storage of the device.
      */
     private fun downloadRecording() {
-        storageRef.child(myUser!!.records[index].path).getDownloadUrl().addOnSuccessListener {
+        storageRef.child(myUser!!.records[index].path).downloadUrl.addOnSuccessListener {
             //Log.e("DownloadRecording", "uri" + it.toString())
             downloadFile(it.toString())
         }.addOnFailureListener{
@@ -142,7 +142,7 @@ class EditRecordingFragment : Fragment() {
         }
     }
     private fun downloadFile(url : String) {
-        val downloadManager = getActivity()?.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val downloadManager = activity?.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val uri = Uri.parse(url)
         val request =  DownloadManager.Request(uri)
         val fileSaved =  File(audioPath);

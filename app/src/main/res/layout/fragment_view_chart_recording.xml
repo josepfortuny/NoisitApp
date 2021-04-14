@@ -64,13 +64,12 @@
             android:paddingBottom="45dp"
             android:orientation="vertical"
             android:weightSum="2">
-            <com.jjoe64.graphview.GraphView
+            <com.example.noisitapp.JosepFortunyClasses.VisualizerView
+                android:id="@+id/visualizerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:id="@+id/graphDB"
-                app:seriesColor="#ee0000"
-                app:title = "A"/>
+                android:layout_weight="1">
+            </com.example.noisitapp.JosepFortunyClasses.VisualizerView>
             <com.jjoe64.graphview.GraphView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

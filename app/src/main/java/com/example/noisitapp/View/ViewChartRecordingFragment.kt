@@ -2,6 +2,8 @@ package com.example.noisitapp.View
 
 import android.app.DownloadManager
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Paint
 import android.media.MediaCodec
 import android.media.MediaExtractor
 import android.media.MediaFormat
@@ -21,6 +23,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.example.noisitapp.JosepFortunyClasses.Render.BarGraphRenderer
 import com.example.noisitapp.Model.User
 import com.example.noisitapp.R
 import com.example.noisitapp.ViewModel.UserViewModelComunication
@@ -81,7 +84,7 @@ class ViewChartRecordingFragment : Fragment() {
         configGraphs()
     }
     private fun configGraphs(){
-        graphDB.title = "DB Analizer"
+        //graphDB.title = "DB Analizer"
 
     }
     /*private fun recordToBytes(fileSaved : File){
@@ -150,7 +153,8 @@ class ViewChartRecordingFragment : Fragment() {
                 //Do something
             }
         }
-        attachVisualizer()
+        //attachVisualizer()
+        visualizerView.link(mplayer)
         chronometer_view_chards.base = SystemClock.elapsedRealtime()
         chronometer_view_chards.start()
         mplayer?.setOnCompletionListener {
@@ -161,7 +165,7 @@ class ViewChartRecordingFragment : Fragment() {
             tv_view_chart_status_recording.text = getString(R.string.tv_RecordingStopped)
         }
     }
-    private fun attachVisualizer() {
+    /*private fun attachVisualizer() {
         vis = Visualizer(mplayer!!.audioSessionId)
         vis.scalingMode = Visualizer.SCALING_MODE_NORMALIZED
         vis.captureSize = Visualizer.getCaptureSizeRange()[0]
@@ -199,6 +203,21 @@ class ViewChartRecordingFragment : Fragment() {
             }
         },Visualizer.getMaxCaptureRate() / 2, false, true)
         vis.enabled = true
+    }*/
+    private fun addBarGraphRenderers() {
+        var paint =  Paint()
+        paint.strokeWidth = 50f
+        paint.isAntiAlias = true
+        paint.color = Color.argb(200, 56, 138, 252)
+        var  barGraphRendererBottom =  BarGraphRenderer(16, paint, false)
+        //mVisualizerView.addRenderer(barGraphRendererBottom);
+
+        var paint2 =  Paint()
+        paint2.strokeWidth = 12f
+        paint2.isAntiAlias = true
+        paint2.color = Color.argb(200, 181, 111, 233)
+        var barGraphRendererTop =  BarGraphRenderer(4, paint2, true)
+        visualizerView.addRenderer(barGraphRendererTop)
     }
     private fun pauseReproducing(){
         vis.release()

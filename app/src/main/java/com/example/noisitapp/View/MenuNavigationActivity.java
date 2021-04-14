@@ -3,17 +3,12 @@ package com.example.noisitapp.View;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -25,26 +20,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.noisitapp.Model.Recording;
 import com.example.noisitapp.Model.User;
 import com.example.noisitapp.R;
 import com.example.noisitapp.ViewModel.FirebaseViewModel;
-import com.example.noisitapp.ViewModel.GpsUtils;
+import com.example.noisitapp.JosepFortunyClasses.GpsUtils;
 import com.example.noisitapp.ViewModel.UserViewModelComunication;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApi;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResult;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 import java.io.File;
-import java.io.PipedInputStream;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.RECORD_AUDIO;
