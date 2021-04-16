@@ -1,6 +1,5 @@
 package com.example.noisitapp.Model
 
-import android.util.Log
 
 data class User(
     var uid:String,

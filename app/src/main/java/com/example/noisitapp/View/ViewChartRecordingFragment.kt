@@ -1,19 +1,11 @@
 package com.example.noisitapp.View
 
-import android.app.DownloadManager
-import android.content.Context
 import android.graphics.Color
 import android.graphics.Paint
-import android.media.MediaCodec
-import android.media.MediaExtractor
-import android.media.MediaFormat
 import android.media.MediaPlayer
-import android.media.audiofx.Visualizer
-import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.os.SystemClock
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,9 +19,6 @@ import com.example.noisitapp.JosepFortunyClasses.Render.BarGraphRenderer
 import com.example.noisitapp.Model.User
 import com.example.noisitapp.R
 import com.example.noisitapp.ViewModel.UserViewModelComunication
-import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.fragment_edit_recording.*
-import kotlinx.android.synthetic.main.fragment_new_recording.*
 import kotlinx.android.synthetic.main.fragment_view_chart_recording.*
 import java.io.File
 import java.io.IOException
@@ -40,14 +29,10 @@ class ViewChartRecordingFragment : Fragment() {
     private var index : Int = 0
     private var isPlaying =false
     private var audioPath =""
-    private val storageRef = FirebaseStorage.getInstance().reference
     private lateinit var user: UserViewModelComunication
     private var isDataReadyToPlay = false
     private var mplayer : MediaPlayer? = null
-    private var mediaExtractor : MediaExtractor ?= null
-    private lateinit var mediaFormat : MediaFormat
-    private lateinit var mediaCodec : MediaCodec
-    private lateinit var  vis : Visualizer
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,21 +72,6 @@ class ViewChartRecordingFragment : Fragment() {
         //graphDB.title = "DB Analizer"
 
     }
-    /*private fun recordToBytes(fileSaved : File){
-        mediaExtractor = MediaExtractor()
-        mediaExtractor!!.setDataSource(fileSaved.toString())
-        mediaExtractor!!.selectTrack(0)
-        mediaFormat = mediaExtractor!!.getTrackFormat(0)
-        val mime:String = mediaFormat.getString(MediaFormat.KEY_MIME)!!
-        mediaCodec = MediaCodec.createDecoderByType(mime)
-        mediaCodec.configure(mediaFormat,null,null,0)
-        mediaCodec.start()
-        var bufferInfo = MediaCodec.BufferInfo()
-        var inputDone = false
-        while (true) {
-
-        }
-    }*/
     private fun getUserViewmodel() {
         user = ViewModelProviders.of(requireActivity()).get(UserViewModelComunication::class.java)
         user.getUser().observe(getViewLifecycleOwner(), Observer {
@@ -111,14 +81,13 @@ class ViewChartRecordingFragment : Fragment() {
                 audioPath = Environment.getExternalStorageDirectory()
                     .getAbsolutePath() + "/Noisitapp Audio Files/" + myUser!!.records[index].path
                 if (!isRecordingInMobileStorage()) {
-                    downloadRecording()
+                    Toast.makeText(context, "404: FILE NOT FOUND", Toast.LENGTH_SHORT).show()
                 }
                 tv_view_chart_status_recording.text = getString(R.string.tv_file_downloaded)
                 isDataReadyToPlay = true
             }
         })
     }
-
     private fun isRecordingInMobileStorage() : Boolean {
         var file =  File(audioPath)
         if (!file.exists()) {
@@ -127,22 +96,6 @@ class ViewChartRecordingFragment : Fragment() {
         return true
     }
 
-    private fun downloadRecording() {
-        storageRef.child(myUser!!.records[index].path).getDownloadUrl().addOnSuccessListener {
-            downloadFile(it.toString())
-        }.addOnFailureListener{
-            Toast.makeText(context, "404: FILE NOT FOUND", Toast.LENGTH_SHORT).show()
-        }
-    }
-    private fun downloadFile(url : String) {
-        val downloadManager = getActivity()?.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        val uri = Uri.parse(url)
-        val request =  DownloadManager.Request(uri)
-        val fileSaved =  File(audioPath)
-        //recordToBytes(fileSaved)
-        request.setDestinationUri(Uri.fromFile(fileSaved))
-        downloadManager.enqueue(request)
-    }
     private fun startReproducing(){
         mplayer = MediaPlayer().apply {
             try {
@@ -153,8 +106,8 @@ class ViewChartRecordingFragment : Fragment() {
                 //Do something
             }
         }
-        //attachVisualizer()
         visualizerView.link(mplayer)
+        addBarGraphRenderers()
         chronometer_view_chards.base = SystemClock.elapsedRealtime()
         chronometer_view_chards.start()
         mplayer?.setOnCompletionListener {
@@ -165,70 +118,21 @@ class ViewChartRecordingFragment : Fragment() {
             tv_view_chart_status_recording.text = getString(R.string.tv_RecordingStopped)
         }
     }
-    /*private fun attachVisualizer() {
-        vis = Visualizer(mplayer!!.audioSessionId)
-        vis.scalingMode = Visualizer.SCALING_MODE_NORMALIZED
-        vis.captureSize = Visualizer.getCaptureSizeRange()[0]
-        Log.e("A","A"+ vis.captureSize)
-        vis.setDataCaptureListener(object : Visualizer.OnDataCaptureListener {
-            override fun onFftDataCapture(
-                vis: Visualizer?,
-                fft: ByteArray?,
-                samplingRate: Int
-            ) {
-                val n = fft?.size
-                val magnitudes = FloatArray(n!! / 2 + 1)
-                val phases = FloatArray(n / 2 + 1)
-                magnitudes[0] = Math.abs(fft[0].toFloat())  // DC
-                magnitudes[n / 2] = Math.abs(fft[1].toFloat()) // Float
-                phases[n / 2] = 0f
-                phases[0] = phases[n / 2]
-                for (k in 1 until n / 2) {
-                    val i = k * 2
-                    magnitudes[k] = Math.hypot(fft[i].toDouble(), fft[i + 1].toDouble()).toFloat()
-                    phases[k] = Math.atan2(fft[i + 1].toDouble(), fft[i].toDouble()).toFloat()
-                    //Log.e("MAGNITUDES" , "Magnitudes" + magnitudes[k].toString())
-                    //Log.e("FASES" , "FASES" + phases[k].toString())
-                }
-
-
-            }
-
-            override fun onWaveFormDataCapture(
-                vis: Visualizer?,
-                bytes: ByteArray?,
-                samplingRate: Int
-            ) {
-
-            }
-        },Visualizer.getMaxCaptureRate() / 2, false, true)
-        vis.enabled = true
-    }*/
     private fun addBarGraphRenderers() {
         var paint =  Paint()
-        paint.strokeWidth = 50f
+        paint.strokeWidth = 10f
         paint.isAntiAlias = true
         paint.color = Color.argb(200, 56, 138, 252)
-        var  barGraphRendererBottom =  BarGraphRenderer(16, paint, false)
-        //mVisualizerView.addRenderer(barGraphRendererBottom);
-
-        var paint2 =  Paint()
-        paint2.strokeWidth = 12f
-        paint2.isAntiAlias = true
-        paint2.color = Color.argb(200, 181, 111, 233)
-        var barGraphRendererTop =  BarGraphRenderer(4, paint2, true)
-        visualizerView.addRenderer(barGraphRendererTop)
+        var  barGraphRendererBottom =  BarGraphRenderer(4, paint, false)
+        visualizerView.addRenderer(barGraphRendererBottom);
     }
     private fun pauseReproducing(){
-        vis.release()
         mplayer?.pause()
-        chronometer?.stop()
+        chronometer_view_chards?.stop()
     }
     private fun stopReproducing(){
-        vis.release()
         mplayer?.release()
         mplayer = null
-
     }
     override fun onStop() {
         super.onStop()

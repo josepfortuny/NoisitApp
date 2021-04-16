@@ -12,7 +12,6 @@ import com.example.noisitapp.Model.User
 import com.example.noisitapp.R
 import com.example.noisitapp.ViewModel.UserViewModelComunication
 import kotlinx.android.synthetic.main.dialogfragment_change_password.*
-import kotlinx.android.synthetic.main.fragment_register.*
 
 class ChangePasswordUserFragment : DialogFragment() {
 

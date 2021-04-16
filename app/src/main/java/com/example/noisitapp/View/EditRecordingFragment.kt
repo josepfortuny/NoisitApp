@@ -1,13 +1,9 @@
 package com.example.noisitapp.View
 
-import android.app.DownloadManager
-import android.content.Context
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.os.SystemClock
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,17 +17,23 @@ import com.example.noisitapp.Model.User
 import com.example.noisitapp.R
 import com.example.noisitapp.ViewModel.UserViewModelComunication
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.fragment_edit_recording.*
 import kotlinx.android.synthetic.main.fragment_new_recording.*
 import java.io.File
 import java.io.IOException
+import java.lang.Exception
 
 class EditRecordingFragment : Fragment() {
     private var myUser : User?= null
     private var index : Int = 0
     private var isPlaying =false
     private var audioPath =""
-    private val storageRef = FirebaseStorage.getInstance().reference
+    private var fileOutput : File ?= null
+    private var localFIle : File ? = null
+    private val mStorage = FirebaseStorage.getInstance("gs://lasalleacousticapp.appspot.com")
+    private val mstorageRef = mStorage.reference
+    private var downloadRef : StorageReference ?= null
     private lateinit var user: UserViewModelComunication
     private var isDataReadyToPlay = false
     private var mplayer : MediaPlayer? = null
@@ -87,7 +89,7 @@ class EditRecordingFragment : Fragment() {
         chronometer_edit_recording_player.stop()
     }
     private fun deleteRecordFirestone(path : String){
-        storageRef.child(path).delete().addOnSuccessListener {
+        mstorageRef.child(path).delete().addOnSuccessListener {
         }.addOnFailureListener{
             Toast.makeText(context, "404: FILE NOT FOUND", Toast.LENGTH_SHORT).show()
         }
@@ -102,9 +104,6 @@ class EditRecordingFragment : Fragment() {
                 index = user.getIndex()
                 audioPath = Environment.getExternalStorageDirectory()
                     .absolutePath + "/Noisitapp Audio Files/" + myUser!!.records[index].path
-                if (!isRecordingInMobileStorage()) {
-                    downloadRecording()
-                }
                 et_editrecording_name.setText(myUser!!.records[index].name)
                 tv_editrecording_date.text = myUser!!.records[index].date
                 tv_editrecording_location.text = myUser!!.records[index].address
@@ -114,8 +113,12 @@ class EditRecordingFragment : Fragment() {
                     auxString += label + "\n"
                 }
                 tv_editrecording_labels.text = auxString.substring(0, auxString.length - 1)
-                tv_editrecording_status_recording.text = getString(R.string.tv_file_downloaded)
-                isDataReadyToPlay = true
+                if (!isRecordingInMobileStorage()) {
+                    downloadRecording()
+                }else{
+                    tv_editrecording_status_recording.text = getString(R.string.tv_file_downloaded)
+                    isDataReadyToPlay = true
+                }
             }
         })
     }
@@ -134,21 +137,26 @@ class EditRecordingFragment : Fragment() {
      * Function that downloads the file from a Uri to the external storage of the device.
      */
     private fun downloadRecording() {
-        storageRef.child(myUser!!.records[index].path).downloadUrl.addOnSuccessListener {
-            //Log.e("DownloadRecording", "uri" + it.toString())
-            downloadFile(it.toString())
-        }.addOnFailureListener{
-            Toast.makeText(context, "404: FILE NOT FOUND", Toast.LENGTH_SHORT).show()
+        downloadRef = mstorageRef.root.child(myUser!!.records[index].path)
+        try {
+            fileOutput  = File(Environment.getExternalStorageDirectory().absolutePath + "/Noisitapp Audio Files/" )
+            if (!fileOutput!!.exists()){
+                fileOutput!!.mkdir()
+            }
+            localFIle = File(fileOutput, myUser!!.records[index].path)
+        }catch (e : Exception){
+         //Do nothing
         }
+        downloadRef!!.getFile(localFIle!!)
+            .addOnSuccessListener {
+                tv_editrecording_status_recording.text = getString(R.string.tv_file_downloaded)
+                isDataReadyToPlay = true
+            }
+            .addOnFailureListener{
+                Toast.makeText(context, "404: FILE NOT FOUND", Toast.LENGTH_SHORT).show()
+            }
     }
-    private fun downloadFile(url : String) {
-        val downloadManager = activity?.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        val uri = Uri.parse(url)
-        val request =  DownloadManager.Request(uri)
-        val fileSaved =  File(audioPath);
-        request.setDestinationUri(Uri.fromFile(fileSaved))
-        downloadManager.enqueue(request)
-    }
+
     private fun startReproducing(){
         mplayer = MediaPlayer().apply {
             try {

@@ -128,6 +128,8 @@
     <string name="toast_error_tap_button"> Error, Hold the micro button to record </string>
     <string name="toast_password_changed_correctly"> Password changed Correctly </string>
     <string name="toast_password_cannot_be_changed"> Password couldn\'t be changed </string>
+    <string name="title_graph_db">DB/HZ</string>
+    <string name="title_graph_a">A/HZ</string>
     <!-- <string name="app_name">Noisitapp</string>
     <string name="action_settings">Settings</string>
      Strings used for fragments for navigation

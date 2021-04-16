@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VisualizerViewXML">
+        <attr name="android:title" />
+        <attr name="seriesData" format="string" />
+        <attr name="seriesType" format="string" />
+        <attr name="seriesTitle" format="string" />
+        <attr name="seriesColor" format="color" />
+    </declare-styleable>
+</resources>

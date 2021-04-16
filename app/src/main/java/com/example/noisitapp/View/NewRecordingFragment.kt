@@ -84,6 +84,7 @@ class NewRecordingFragment: Fragment() {
     private var bos : ByteArrayOutputStream?= null
 
     private val uploadRecording = Recording()
+    private var recordingUrl : Uri ?= null
     // Nova llibreria
     private var timer: Timer? = null
 
@@ -249,9 +250,10 @@ class NewRecordingFragment: Fragment() {
         return ok
     }
     private fun uploadRecording():Boolean{
+        uploadToFirebaseStorage()
         getRecordingInfo()
         (activity as MenuNavigationActivity).updateRecodringUser(myUser!!)
-        uploadToFirebaseStorage()
+
         return true
     }
     fun  uploadToFirebaseStorage() {

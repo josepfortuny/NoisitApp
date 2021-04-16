@@ -129,4 +129,6 @@
     <string name="toast_error_tap_button"> Error, Mantenga el botón apretado al grabar </string>
     <string name="toast_password_changed_correctly"> Contrasenya cambiada correctamente </string>
     <string name="toast_password_cannot_be_changed"> No se pudo cambiar la Contrasenya </string>
+    <string name="title_graph_db">DB/HZ</string>
+    <string name="title_graph_a">A/HZ</string>
 </resources>

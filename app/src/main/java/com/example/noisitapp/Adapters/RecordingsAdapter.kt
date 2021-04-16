@@ -35,7 +35,7 @@ class RecordingsAdapter(private var myDataset: ArrayList<Recording>, private val
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Log.e("AA","AAA" + myDataset.get(0))
+        //Log.e("AA","AAA" + myDataset.get(0))
         holder.tv_name.text = myDataset[position].name
         holder.tv_date.text =  myDataset[position].date
         holder.tv_duration.text = "Duration: "+ myDataset[position].duration

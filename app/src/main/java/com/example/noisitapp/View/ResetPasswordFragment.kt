@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
-import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -17,9 +14,7 @@ import com.example.noisitapp.R
 import com.example.noisitapp.ViewModel.FirebaseViewModel
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_resetpassword.*
-import org.w3c.dom.Text
 
 class ResetPasswordFragment : Fragment() {
     private lateinit var user: FirebaseViewModel

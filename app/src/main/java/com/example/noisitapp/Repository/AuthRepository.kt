@@ -1,19 +1,12 @@
 package com.example.noisitapp.Repository
 
-import android.net.Uri
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.noisitapp.Model.Recording
 import com.example.noisitapp.Model.User
-import com.example.noisitapp.R
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import java.io.File
 
 class AuthRepository{
     private val firebaseAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }

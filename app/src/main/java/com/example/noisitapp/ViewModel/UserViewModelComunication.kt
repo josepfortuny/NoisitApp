@@ -1,12 +1,9 @@
 package com.example.noisitapp.ViewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.noisitapp.Model.Recording
 import com.example.noisitapp.Model.User
-import com.example.noisitapp.Repository.AuthRepository
 
 class UserViewModelComunication : ViewModel() {
     private var user = MutableLiveData<User>()

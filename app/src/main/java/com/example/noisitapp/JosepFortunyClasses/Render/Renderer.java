@@ -2,7 +2,6 @@ package com.example.noisitapp.JosepFortunyClasses.Render;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
-
 import com.example.noisitapp.JosepFortunyClasses.AudioData;
 import com.example.noisitapp.JosepFortunyClasses.FFTData;
 
@@ -39,12 +38,11 @@ abstract public class Renderer {
      * @param data - Data to render
      * @param rect - Rect to render into
      */
-    final public void render(Canvas canvas, AudioData data, Rect rect)
-    {
-        if (mPoints == null || mPoints.length < data.bytes.length * 4) {
+    final public void render(Canvas canvas, AudioData data, Rect rect) {
+        //if (mPoints == null || mPoints.length < data.bytes.length * 4) {
+        if (mPoints == null || mPoints.length < data.bytes.length *2) {
             mPoints = new float[data.bytes.length * 4];
         }
-
         onRender(canvas, data, rect);
     }
 
@@ -54,12 +52,10 @@ abstract public class Renderer {
      * @param data - Data to render
      * @param rect - Rect to render into
      */
-    final public void render(Canvas canvas, FFTData data, Rect rect)
-    {
+    final public void render(Canvas canvas, FFTData data, Rect rect) {
         if (mFFTPoints == null || mFFTPoints.length < data.bytes.length * 4) {
             mFFTPoints = new float[data.bytes.length * 4];
         }
-
         onRender(canvas, data, rect);
     }
 }

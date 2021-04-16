@@ -21,8 +21,7 @@ public class BarGraphRenderer extends Renderer
      */
     public BarGraphRenderer(int divisions,
                             Paint paint,
-                            boolean top)
-    {
+                            boolean top) {
         super();
         mDivisions = divisions;
         mPaint = paint;
@@ -30,14 +29,12 @@ public class BarGraphRenderer extends Renderer
     }
 
     @Override
-    public void onRender(Canvas canvas, AudioData data, Rect rect)
-    {
+    public void onRender(Canvas canvas, AudioData data, Rect rect) {
         // Do nothing, we only display FFT data
     }
 
     @Override
-    public void onRender(Canvas canvas, FFTData data, Rect rect)
-    {
+    public void onRender(Canvas canvas, FFTData data, Rect rect) {
         for (int i = 0; i < data.bytes.length / mDivisions; i++) {
             mFFTPoints[i * 4] = i * 4 * mDivisions;
             mFFTPoints[i * 4 + 2] = i * 4 * mDivisions;
@@ -45,19 +42,14 @@ public class BarGraphRenderer extends Renderer
             byte ifk = data.bytes[mDivisions * i + 1];
             float magnitude = (rfk * rfk + ifk * ifk);
             int dbValue = (int) (10 * Math.log10(magnitude));
-
-            if(mTop)
-            {
+            if(mTop) {
                 mFFTPoints[i * 4 + 1] = 0;
                 mFFTPoints[i * 4 + 3] = (dbValue * 2 - 10);
-            }
-            else
-            {
+            } else {
                 mFFTPoints[i * 4 + 1] = rect.height();
                 mFFTPoints[i * 4 + 3] = rect.height() - (dbValue * 2 - 10);
             }
         }
-
         canvas.drawLines(mFFTPoints, mPaint);
     }
 }
