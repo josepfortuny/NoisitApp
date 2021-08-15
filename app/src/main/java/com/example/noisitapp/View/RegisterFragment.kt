@@ -24,7 +24,7 @@ class RegisterFragment : Fragment() {
         super.onCreate(savedInstanceState)
         // This callback will only be called when MyFragment is at least Started.
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
-            findNavController().navigate(R.id.action_newRecordingFragment_to_dashboardFragment)
+            findNavController().navigate(R.id.action_navRegisterFragment_to_loginFragment)
         }
         // Handle the back button event
     }
